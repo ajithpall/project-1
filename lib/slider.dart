@@ -6,9 +6,9 @@ class AdvertisementWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<String> imgList = [
-      'https://via.placeholder.com/400x200.png?text=Ad+1',
-      'https://via.placeholder.com/400x200.png?text=Ad+2',
-      'https://via.placeholder.com/400x200.png?text=Ad+3',
+      'assets/images/one.jpeg',
+      'assets/images/second.jpeg',
+      'assets/images/three.jpeg',
     ];
 
     return Stack(
