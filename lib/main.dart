@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:drone_sale/search.dart';
 import 'package:drone_sale/slider.dart';
 
-
-
 void main() => runApp(const MyApp());
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
