@@ -16,8 +16,24 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class AppOne extends StatelessWidget {
+class AppOne extends StatefulWidget {
   const AppOne({super.key});
+
+  @override
+  _AppOneState createState() => _AppOneState();
+}
+
+class _AppOneState extends State<AppOne> {
+  final ScrollController _scrollController = ScrollController();
+
+  void _scrollToContactUs() {
+    // Scroll to the bottom (Contact Us section)
+    _scrollController.animateTo(
+      _scrollController.position.maxScrollExtent,
+      duration: const Duration(seconds: 2),
+      curve: Curves.easeInOut,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +43,10 @@ class AppOne extends StatelessWidget {
           children: [
             Image.asset(
               'assets/images/logo.png',
-              // Make sure to include the file extension
               height: 50,
-              width: 50, // Adjust the height as needed
+              width: 50,
             ),
-            const SizedBox(width: 10), // Space between logo and text
+            const SizedBox(width: 10),
           ],
         ),
         flexibleSpace: const Stack(
@@ -39,57 +54,55 @@ class AppOne extends StatelessWidget {
             Positioned(
               left: 100,
               bottom: 7,
-              child: Text('Drones', style: TextStyle(color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18)),
+              child: Text('DRONES',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18)),
             ),
             Positioned(
               left: 190,
               bottom: 6,
-              child: Text('Services', style: TextStyle(color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18)),
+              child: Text('SERVICES',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18)),
             ),
             Positioned(
               left: 290,
               bottom: 6,
-              child: Text('Maintenance', style: TextStyle(color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18)),
+              child: Text('MAINTENANCE',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18)),
             ),
             Positioned(
               left: 430,
               bottom: 6,
-              child: Text('3D Parts', style: TextStyle(color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18)),
+              child: Text('3D PARTS',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18)),
             ),
             Positioned(
               left: 530,
               bottom: 6,
-              child: Text('Contact Us', style: TextStyle(color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18)),
-            ), //this code with some bug
-            /*  SizedBox(width:100),
-            Text('Drones', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18)),
-            SizedBox(width: 20),
-            Text('Services', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize:18)),
-            SizedBox(width: 20),
-            Text('Maintenance', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize:18)),
-            SizedBox(width: 20),
-            Text('3D Parts', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize:18)),
-            SizedBox(width: 20),
-            Text('Contact Us', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize:18)),
-            */ //not working code so i drop it
-          ], //children
+              child: Text('CONTACT US',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18)),
+            ),
+          ],
         ),
         backgroundColor: Colors.blueGrey,
-        //backgroundColor: const Color(0xFFFFD700),
         actions: [
           const SizedBox(width: 25),
           IconButton(
-            icon: const Icon(Icons.search), // Search icon
+            icon: const Icon(Icons.search),
             onPressed: () {
               showSearchDialog(context);
             },
@@ -108,7 +121,12 @@ class AppOne extends StatelessWidget {
               // Add functionality here
             },
           ),
-        ], // actions
+          const SizedBox(width: 25),
+          IconButton(
+            icon: const Icon(Icons.contact_page),
+            onPressed: _scrollToContactUs, // Scroll to "Contact Us"
+          ),
+        ],
       ),
       body: Stack(
         children: [
@@ -121,16 +139,14 @@ class AppOne extends StatelessWidget {
             ),
           ),
           SingleChildScrollView(
+            controller: _scrollController, // Attach the ScrollController
             child: Column(
               children: [
                 const SizedBox(height: 20),
                 const AdvertisementWidget(), // Your advertisement banner
                 const SizedBox(height: 80), //starting of after the banner
                 SizedBox(
-                  height: MediaQuery
-                      .of(context)
-                      .size
-                      .height * 0.8, // Adjust the height as needed
+                  height: MediaQuery.of(context).size.height * 0.8,
                   child: ProductGrid(), // Your product grid
                 ),
                 const SizedBox(height: 300),
@@ -145,25 +161,24 @@ class AppOne extends StatelessWidget {
                         alignment: Alignment.topCenter,
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
-                          children: [
+                          children: const [
                             Text(
-                              'About Us',
+                              'ABOUT US',
                               style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             SizedBox(height: 10),
-                            Positioned(
-                              left:20,
-                            bottom:20,
-                            child:
-                               Text(
-                              'We provide service like..',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                            ),
                           ],
+                        ),
+                      ),
+                      const Positioned(
+                        left: 20,
+                        bottom: 20,
+                        child: Text(
+                          'We provide service like..',
+                          style: TextStyle(fontSize: 16),
                         ),
                       ),
                       Positioned(
@@ -174,8 +189,7 @@ class AppOne extends StatelessWidget {
                           width: 100,
                           height: 100,
                           errorBuilder: (context, error, stackTrace) {
-                            return const Icon(Icons
-                                .error); // Placeholder if the image fails to load
+                            return const Icon(Icons.error);
                           },
                         ),
                       ),
@@ -187,8 +201,7 @@ class AppOne extends StatelessWidget {
                           width: 100,
                           height: 100,
                           errorBuilder: (context, error, stackTrace) {
-                            return const Icon(Icons
-                                .error); // Placeholder if the image fails to load
+                            return const Icon(Icons.error);
                           },
                         ),
                       ),
@@ -200,8 +213,7 @@ class AppOne extends StatelessWidget {
                           width: 100,
                           height: 100,
                           errorBuilder: (context, error, stackTrace) {
-                            return const Icon(Icons
-                                .error); // Placeholder if the image fails to load
+                            return const Icon(Icons.error);
                           },
                         ),
                       ),
