@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class ProductGrid extends StatelessWidget {
+class ProductGrid  extends StatelessWidget {
   final List<Product> products = [
-    Product('Product 1', '', 1000, 900),//the number is price of the product
-    Product('Product 2', '', 2000, 1800),//add photo inside the quotes
-    Product('product 3', '',399,7874),
-    Product('product 4','',37,738),
-    Product('Product 5', '', 1000, 900),
-    Product('Product 6', '', 2000, 1800),
-    Product('Product 7', '', 1000, 900),
-    Product('Product 8', '', 2000, 1800),
+    Product('Product 1', 'assets/images/coming soon.jpeg', 0,0),//the number is price of the product
+    Product('Product 2', 'assets/images/coming soon.jpeg', 0, 0),//add photo inside the quotes
+    Product('product 3', 'assets/images/coming soon.jpeg',0,0),
+    Product('product 4','assets/images/coming soon.jpeg',0,0),
+    Product('Product 5', 'assets/images/coming soon.jpeg', 0, 0),
+    Product('Product 6', 'assets/images/coming soon.jpeg', 0, 0),
+    Product('Product 7', 'assets/images/coming soon.jpeg', 0, 0),
+    Product('Product 8', 'assets/images/coming soon.jpeg', 0, 0),
     // Add more products here
   ];
 
@@ -21,7 +21,7 @@ class ProductGrid extends StatelessWidget {
         crossAxisCount: 4, // Number of columns
         crossAxisSpacing: 10.0,
         mainAxisSpacing: 10.0,
-        childAspectRatio: 4/2, // Width to height ratio of each item
+        childAspectRatio: 2/2, // Width to height ratio of each item
       ),
       itemCount: products.length,
       itemBuilder: (context, index) {

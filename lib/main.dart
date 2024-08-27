@@ -26,41 +26,52 @@ class AppOne extends StatelessWidget {
         title: Row(
           children: [
             Image.asset(
-              'assets/images/logo.png', // Make sure to include the file extension
+              'assets/images/logo.png',
+              // Make sure to include the file extension
               height: 50,
-              width: 50,// Adjust the height as needed
+              width: 50, // Adjust the height as needed
             ),
             const SizedBox(width: 10), // Space between logo and text
           ],
         ),
         flexibleSpace: const Stack(
           children: [
-           Positioned(
-              left:100,
-              bottom:7,
-              child: Text('Drones',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold, fontSize:18)),
+            Positioned(
+              left: 100,
+              bottom: 7,
+              child: Text('Drones', style: TextStyle(color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18)),
             ),
             Positioned(
-              left:190,
-              bottom:6,
-              child: Text('Services',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize:18)),
+              left: 190,
+              bottom: 6,
+              child: Text('Services', style: TextStyle(color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18)),
             ),
             Positioned(
-              left:290,
-              bottom : 6,
-              child: Text('Maintenance',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize:18)),
+              left: 290,
+              bottom: 6,
+              child: Text('Maintenance', style: TextStyle(color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18)),
             ),
             Positioned(
-              left:430,
-              bottom : 6,
-              child: Text('3D Parts',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize:18)),
+              left: 430,
+              bottom: 6,
+              child: Text('3D Parts', style: TextStyle(color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18)),
             ),
             Positioned(
-              left:530,
-              bottom : 6,
-              child: Text('Contact Us',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize:18)),
-            ),//this code with some bug
-          /*  SizedBox(width:100),
+              left: 530,
+              bottom: 6,
+              child: Text('Contact Us', style: TextStyle(color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18)),
+            ), //this code with some bug
+            /*  SizedBox(width:100),
             Text('Drones', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18)),
             SizedBox(width: 20),
             Text('Services', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize:18)),
@@ -70,8 +81,8 @@ class AppOne extends StatelessWidget {
             Text('3D Parts', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize:18)),
             SizedBox(width: 20),
             Text('Contact Us', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize:18)),
-            */  //not working code so i drop it
-          ],//children
+            */ //not working code so i drop it
+          ], //children
         ),
         backgroundColor: Colors.blueGrey,
         //backgroundColor: const Color(0xFFFFD700),
@@ -102,7 +113,7 @@ class AppOne extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            decoration : const BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage("assets/images/background.png"),
                 fit: BoxFit.cover,
@@ -114,31 +125,89 @@ class AppOne extends StatelessWidget {
               children: [
                 const SizedBox(height: 20),
                 const AdvertisementWidget(), // Your advertisement banner
-                const SizedBox(height: 100),
+                const SizedBox(height: 80), //starting of after the banner
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.8, // Adjust the height as needed
+                  height: MediaQuery
+                      .of(context)
+                      .size
+                      .height * 0.8, // Adjust the height as needed
                   child: ProductGrid(), // Your product grid
                 ),
-               Container(
-                color: Colors.grey[200], // Background color for the About section
-                padding: const EdgeInsets.all(20),
-                 child: const Column(
-                 children: [
-                  Text(
-                  'About Us',
-                   style: TextStyle(
-                  fontSize: 24,
-                    fontWeight: FontWeight.bold,
+                const SizedBox(height: 300),
+                Container(
+                  width: double.infinity,
+                  height: 400,
+                  color: Colors.lightBlueAccent,
+                  padding: const EdgeInsets.all(20),
+                  child: Stack(
+                    children: [
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              'About Us',
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                            Positioned(
+                              left:20,
+                            bottom:20,
+                            child:
+                               Text(
+                              'We provide service like..',
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Positioned(
+                        left: 20,
+                        top: 100,
+                        child: Image.asset(
+                          '',
+                          width: 100,
+                          height: 100,
+                          errorBuilder: (context, error, stackTrace) {
+                            return const Icon(Icons
+                                .error); // Placeholder if the image fails to load
+                          },
+                        ),
+                      ),
+                      Positioned(
+                        right: 20,
+                        top: 100,
+                        child: Image.asset(
+                          '',
+                          width: 100,
+                          height: 100,
+                          errorBuilder: (context, error, stackTrace) {
+                            return const Icon(Icons
+                                .error); // Placeholder if the image fails to load
+                          },
+                        ),
+                      ),
+                      Positioned(
+                        left: 150,
+                        bottom: 20,
+                        child: Image.asset(
+                          '',
+                          width: 100,
+                          height: 100,
+                          errorBuilder: (context, error, stackTrace) {
+                            return const Icon(Icons
+                                .error); // Placeholder if the image fails to load
+                          },
+                        ),
+                      ),
+                    ],
                   ),
-                 ),
-                   SizedBox(height: 10),
-                  Text(
-                  'This is the about section where you can write about your company, mission, and values.',
-                   style: TextStyle(fontSize: 16),
-                  ),
-                 ],
-                 ),
-               ),
+                ),
               ],
             ),
           ),

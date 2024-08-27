@@ -6,9 +6,9 @@ class AdvertisementWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<String> imgList = [
-      'assets/images/one.jpeg',
-      'assets/images/second.jpeg',
-      'assets/images/three.jpeg',
+      'assets/images/background.png',
+      'assets/images/background.png',
+      'assets/images/background.png',
     ];
 
     return Stack(
