@@ -298,7 +298,7 @@ class _AppOneState extends State<AppOne> {
                           children: [
                             Image.asset(
                               'assets/images/insta.jpeg',
-                              width: 30,
+                              width: 10,
                               height: 30,
                               errorBuilder: (context, error, stackTrace) {
                                 return const Icon(Icons.error);
