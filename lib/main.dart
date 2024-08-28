@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:drone_sale/search.dart';
 import 'package:drone_sale/slider.dart';
 import 'package:drone_sale/product_grid.dart';
+import 'package:drone_sale/drones_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -25,14 +26,17 @@ class AppOne extends StatefulWidget {
 
 class _AppOneState extends State<AppOne> {
   final ScrollController _scrollController = ScrollController();
+  final GlobalKey _contactUsKey = GlobalKey();
 
   void _scrollToContactUs() {
-    // Scroll to the bottom (Contact Us section)
-    _scrollController.animateTo(
-      _scrollController.position.maxScrollExtent,
-      duration: const Duration(seconds: 2),
-      curve: Curves.easeInOut,
-    );
+    final context = _contactUsKey.currentContext;
+    if (context != null) {
+      Scrollable.ensureVisible(
+        context,
+        duration: const Duration(seconds: 2),
+        curve: Curves.easeInOut,
+      );
+    }
   }
 
   @override
@@ -42,36 +46,76 @@ class _AppOneState extends State<AppOne> {
         title: Row(
           children: [
             Image.asset(
-              'assets/images/logo.png',
+              'assets/images/logo two.png',
               height: 50,
               width: 50,
             ),
             const SizedBox(width: 10),
           ],
         ),
-        flexibleSpace: const Stack(
+        flexibleSpace: Stack(
           children: [
             Positioned(
               left: 100,
-              bottom: 7,
-              child: Text('DRONES',
+              bottom: 8,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            DroneParts()), // Navigate to DroneParts page
+                  );
+                },
+                child: const Text(
+                  'DRONES',
                   style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18)),
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
             ),
             Positioned(
-              left: 190,
-              bottom: 6,
-              child: Text('SERVICES',
+              left: 220,
+              bottom: 8,
+              child: PopupMenuButton<String>(
+                onSelected: (value) {
+                  // Handle menu selection
+                  print('>: $value');
+                  // You can navigate to different pages or perform actions based on the selected value
+                },
+                itemBuilder: (BuildContext context) {
+                  return <PopupMenuEntry<String>>[
+                    const PopupMenuItem<String>(
+                      value: 'Service 1',
+                      child: Text('Maintenance'),
+                    ),
+                    const PopupMenuItem<String>(
+                      value: 'Cable Management',
+                      child: Text('Service 2'),
+                    ),
+                    const PopupMenuItem<String>(
+                      value: 'Calibration',
+                      child: Text('Service 3'),
+                    ),
+                  ];
+                },
+                child: const Text(
+                  'SERVICES',
                   style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18)),
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
             ),
+
             Positioned(
-              left: 290,
-              bottom: 6,
+              left: 325,
+              bottom: 8,
               child: Text('MAINTENANCE',
                   style: TextStyle(
                       color: Colors.white,
@@ -79,22 +123,40 @@ class _AppOneState extends State<AppOne> {
                       fontSize: 18)),
             ),
             Positioned(
-              left: 430,
-              bottom: 6,
-              child: Text('3D PARTS',
+              left: 470,
+              bottom: 8,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            DroneParts()), // Navigate to DroneParts page
+                  );
+                },
+                child: const Text(
+                  '3D PARTS',
                   style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18)),
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
             ),
             Positioned(
-              left: 530,
-              bottom: 6,
-              child: Text('CONTACT US',
+              left: 580,
+              bottom: 7.5,
+              child: TextButton(
+                onPressed: _scrollToContactUs,
+                child: Text(
+                  'CONTACT US',
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 18)),
+                      fontSize: 18),
+                ),
+              ),
             ),
           ],
         ),
@@ -122,10 +184,6 @@ class _AppOneState extends State<AppOne> {
             },
           ),
           const SizedBox(width: 25),
-          IconButton(
-            icon: const Icon(Icons.contact_page),
-            onPressed: _scrollToContactUs, // Scroll to "Contact Us"
-          ),
         ],
       ),
       body: Stack(
@@ -151,17 +209,19 @@ class _AppOneState extends State<AppOne> {
                 ),
                 const SizedBox(height: 300),
                 Container(
+                  key: _contactUsKey,
+                  // Key for scrolling to this section
                   width: double.infinity,
                   height: 400,
-                  color: Colors.lightBlueAccent,
+                  color: Colors.white,
                   padding: const EdgeInsets.all(20),
                   child: Stack(
                     children: [
-                      Align(
+                      const Align(
                         alignment: Alignment.topCenter,
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
-                          children: const [
+                          children: [
                             Text(
                               'ABOUT US',
                               style: TextStyle(
@@ -170,51 +230,89 @@ class _AppOneState extends State<AppOne> {
                               ),
                             ),
                             SizedBox(height: 10),
-                          ],
+                          ], //children
                         ),
                       ),
                       const Positioned(
                         left: 20,
-                        bottom: 20,
+                        top: 40,
                         child: Text(
-                          'We provide service like..',
+                          'We provide service like ',
                           style: TextStyle(fontSize: 16),
                         ),
                       ),
                       Positioned(
-                        left: 20,
-                        top: 100,
-                        child: Image.asset(
-                          '',
-                          width: 100,
-                          height: 100,
-                          errorBuilder: (context, error, stackTrace) {
-                            return const Icon(Icons.error);
-                          },
+                        left: 900,
+                        bottom: 300,
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              'assets/images/phone.png',
+                              width: 30,
+                              height: 30,
+                              errorBuilder: (context, error, stackTrace) {
+                                return const Icon(Icons.error);
+                              },
+                            ),
+                            Text(
+                              'Your Text Here',
+                              style: TextStyle(
+                                color: Colors.black,
+                                // Customize your text style
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       Positioned(
-                        right: 20,
-                        top: 100,
-                        child: Image.asset(
-                          '',
-                          width: 100,
-                          height: 100,
-                          errorBuilder: (context, error, stackTrace) {
-                            return const Icon(Icons.error);
-                          },
+                        left: 900,
+                        bottom: 50,
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              'assets/images/gmail.png',
+                              width: 30,
+                              height: 30,
+                              errorBuilder: (context, error, stackTrace) {
+                                return const Icon(Icons.error);
+                              },
+                            ),
+                            Text(
+                              'Your Text Here',
+                              style: TextStyle(
+                                color: Colors.black,
+                                // Customize your text style
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       Positioned(
-                        left: 150,
-                        bottom: 20,
-                        child: Image.asset(
-                          '',
-                          width: 100,
-                          height: 100,
-                          errorBuilder: (context, error, stackTrace) {
-                            return const Icon(Icons.error);
-                          },
+                        left: 900,
+                        bottom: 200,
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              'assets/images/insta.jpeg',
+                              width: 30,
+                              height: 30,
+                              errorBuilder: (context, error, stackTrace) {
+                                return const Icon(Icons.error);
+                              },
+                            ),
+                            Text(
+                              'name of id',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
