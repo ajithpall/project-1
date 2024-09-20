@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:drone_sale/search.dart';
 import 'package:drone_sale/slider.dart';
 import 'package:drone_sale/product_grid.dart';
-import 'package:drone_sale/drones_page.dart';
+import 'package:drone_sale/bar_text.dart';
 
 void main() => runApp(const MyApp());
 
@@ -44,124 +44,35 @@ class _AppOneState extends State<AppOne> {
     return Scaffold(
       appBar: AppBar(
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Image.asset(
-              'assets/images/logo two.png',
+              'assets/images/logo.png',
               height: 50,
               width: 50,
             ),
             const SizedBox(width: 10),
           ],
         ),
-        flexibleSpace: Stack(
-          children: [
-            Positioned(
-              left: 100,
-              bottom: 8,
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            DroneParts()), // Navigate to DroneParts page
-                  );
-                },
-                child: const Text(
-                  'DRONES',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              left: 220,
-              bottom: 8,
-              child: PopupMenuButton<String>(
-                onSelected: (value) {
-                  // Handle menu selection
-                  print('>: $value');
-                  // You can navigate to different pages or perform actions based on the selected value
-                },
-                itemBuilder: (BuildContext context) {
-                  return <PopupMenuEntry<String>>[
-                    const PopupMenuItem<String>(
-                      value: 'Service 1',
-                      child: Text('Maintenance'),
-                    ),
-                    const PopupMenuItem<String>(
-                      value: 'Cable Management',
-                      child: Text('Service 2'),
-                    ),
-                    const PopupMenuItem<String>(
-                      value: 'Calibration',
-                      child: Text('Service 3'),
-                    ),
-                  ];
-                },
-                child: const Text(
-                  'SERVICES',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
-                ),
-              ),
-            ),
-
-            Positioned(
-              left: 325,
-              bottom: 8,
-              child: Text('MAINTENANCE',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18)),
-            ),
-            Positioned(
-              left: 470,
-              bottom: 8,
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            DroneParts()), // Navigate to DroneParts page
-                  );
-                },
-                child: const Text(
-                  '3D PARTS',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              left: 580,
-              bottom: 7.5,
-              child: TextButton(
-                onPressed: _scrollToContactUs,
-                child: Text(
-                  'CONTACT US',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18),
-                ),
-              ),
-            ),
-          ],
+        flexibleSpace: Container(
+          padding: EdgeInsets.fromLTRB(0, 20, 300, 0),
+          child: FlexibleSpaceContent(),
         ),
-        backgroundColor: Colors.blueGrey,
+        elevation: 10,
+        backgroundColor: Colors.blueAccent,
         actions: [
+          // ElevatedButton for Login
+          ElevatedButton(
+            onPressed: () {
+              // Navigate to login screen or perform login action
+            },
+            style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.white,
+              backgroundColor: Colors.greenAccent, // Text color
+            ),
+            child: Text('Login/Signup'),
+          ),
+          const SizedBox(width: 10),
           const SizedBox(width: 25),
           IconButton(
             icon: const Icon(Icons.search),
