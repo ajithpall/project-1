@@ -4,6 +4,7 @@ import 'package:drone_sale/slider.dart';
 import 'package:drone_sale/product_grid.dart';
 import 'package:drone_sale/bar_text.dart';
 import 'package:drone_sale/about_page.dart';
+import 'package:drone_sale/login_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -72,20 +73,30 @@ class _AppOneState extends State<AppOne> {
           ],
         ),
         flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.blueAccent, Colors.lightBlueAccent], // Gradient colors
-              begin: Alignment.topRight, // Gradient start position
+          decoration:  BoxDecoration(
+            gradient: const LinearGradient(
+              colors: [Colors.blueAccent, Colors.lightBlueAccent],
+              // Gradient colors
+              begin: Alignment.topRight,
+              // Gradient start position
               end: Alignment.bottomRight, // Gradient end position
             ),
+            boxShadow: [
+              BoxShadow(
+                color : Colors.blue.withOpacity(0.6),
+                offset: const Offset(0,5),
+                blurRadius: 9,
+              ),
+            ],
           ),
-          padding: const EdgeInsets.fromLTRB(0, 20, 500,0 ),
+          padding: const EdgeInsets.fromLTRB(0, 20, 500, 0),
           child: const FlexibleSpaceContent(),
         ),
         actions: [
           // ElevatedButton for Login
           ElevatedButton(
             onPressed: () {
+              LoginPage();
               // Navigate to login screen or perform login action
             },
             style: ElevatedButton.styleFrom(

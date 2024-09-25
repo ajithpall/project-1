@@ -63,12 +63,14 @@ flutter:
     - assets/images/background.png
     - assets/images/logo.png
     - assets/images/coming soon.jpeg
-    - assets/images/gmail.png
-    - assets/images/insta.jpeg
-    - assets/images/phone.png
+    - assets/images/gmail logo.png
+    - assets/images/whatsapp logo.jpeg
+    - assets/images/contact logo.png
     - assets/images/redback.jpeg
     - assets/images/redback2.jpeg
     - assets/images/redback3.jpeg
+    - assets/images/linkedin image.png
+    - assets/images/instagram image.jpeg
 
 
   # The following line ensures that the Material Icons font is
