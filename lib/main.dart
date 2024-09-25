@@ -3,6 +3,7 @@ import 'package:drone_sale/search.dart';
 import 'package:drone_sale/slider.dart';
 import 'package:drone_sale/product_grid.dart';
 import 'package:drone_sale/bar_text.dart';
+import 'package:drone_sale/about_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -22,19 +23,35 @@ class AppOne extends StatefulWidget {
 
   @override
   _AppOneState createState() => _AppOneState();
+
+  //return type _AppOneState   cretatestate is method to create a state return _AppOneState
+  void callUs() {
+    _AppOneState().scrollToContactUs(); // Publicly accessible
+  }
 }
 
 class _AppOneState extends State<AppOne> {
   final ScrollController _scrollController = ScrollController();
+
+  // final class name  instance name  = class name () ;
   final GlobalKey _contactUsKey = GlobalKey();
 
-  void _scrollToContactUs() {
+  //golbalkey is class that create ah instance name of _contactkey that return value of globalkey
+  //ScrollController get contactus => _scrollController;
+  //return type get get_name ger_return _scrollcontroller
+  void scrollToContactUs() {
     final context = _contactUsKey.currentContext;
+    //context value is get form global key instance and set the current value of context
     if (context != null) {
+      //if the context is null make a error so tell the compailer not null value
       Scrollable.ensureVisible(
+        //class for scrolling method is ensurevisible tells this function are in the class
         context,
+        // context tells widget position
         duration: const Duration(seconds: 2),
+        // duration class
         curve: Curves.easeInOut,
+        // make a good transition animation of staring and ending scroll
       );
     }
   }
@@ -51,15 +68,20 @@ class _AppOneState extends State<AppOne> {
               height: 50,
               width: 50,
             ),
-            const SizedBox(width: 10),
+            const SizedBox(width: 0),
           ],
         ),
         flexibleSpace: Container(
-          padding: EdgeInsets.fromLTRB(0, 20, 300, 0),
-          child: FlexibleSpaceContent(),
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.blueAccent, Colors.lightBlueAccent], // Gradient colors
+              begin: Alignment.topRight, // Gradient start position
+              end: Alignment.bottomRight, // Gradient end position
+            ),
+          ),
+          padding: const EdgeInsets.fromLTRB(0, 20, 500,0 ),
+          child: const FlexibleSpaceContent(),
         ),
-        elevation: 10,
-        backgroundColor: Colors.blueAccent,
         actions: [
           // ElevatedButton for Login
           ElevatedButton(
@@ -70,7 +92,7 @@ class _AppOneState extends State<AppOne> {
               foregroundColor: Colors.white,
               backgroundColor: Colors.greenAccent, // Text color
             ),
-            child: Text('Login/Signup'),
+            child: const Text('Login/Signup'),
           ),
           const SizedBox(width: 10),
           const SizedBox(width: 25),
@@ -115,119 +137,17 @@ class _AppOneState extends State<AppOne> {
                 const AdvertisementWidget(), // Your advertisement banner
                 const SizedBox(height: 80), //starting of after the banner
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.8,
+                  height: MediaQuery.of(context).size.height *
+                      0.8, //responsive gride transform its size
                   child: ProductGrid(), // Your product grid
                 ),
                 const SizedBox(height: 300),
+                // about us page
                 Container(
                   key: _contactUsKey,
+                  // when click the contact text , this key give help to navigate to this contanier
                   // Key for scrolling to this section
-                  width: double.infinity,
-                  height: 400,
-                  color: Colors.white,
-                  padding: const EdgeInsets.all(20),
-                  child: Stack(
-                    children: [
-                      const Align(
-                        alignment: Alignment.topCenter,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              'ABOUT US',
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                          ], //children
-                        ),
-                      ),
-                      const Positioned(
-                        left: 20,
-                        top: 40,
-                        child: Text(
-                          'We provide service like ',
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ),
-                      Positioned(
-                        left: 900,
-                        bottom: 300,
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/phone.png',
-                              width: 30,
-                              height: 30,
-                              errorBuilder: (context, error, stackTrace) {
-                                return const Icon(Icons.error);
-                              },
-                            ),
-                            Text(
-                              'Your Text Here',
-                              style: TextStyle(
-                                color: Colors.black,
-                                // Customize your text style
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Positioned(
-                        left: 900,
-                        bottom: 50,
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/gmail.png',
-                              width: 30,
-                              height: 30,
-                              errorBuilder: (context, error, stackTrace) {
-                                return const Icon(Icons.error);
-                              },
-                            ),
-                            Text(
-                              'Your Text Here',
-                              style: TextStyle(
-                                color: Colors.black,
-                                // Customize your text style
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Positioned(
-                        left: 900,
-                        bottom: 200,
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/insta.jpeg',
-                              width: 10,
-                              height: 30,
-                              errorBuilder: (context, error, stackTrace) {
-                                return const Icon(Icons.error);
-                              },
-                            ),
-                            Text(
-                              'name of id',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                  child: const Aboutpage(), // Aboutpage class
                 ),
               ],
             ),

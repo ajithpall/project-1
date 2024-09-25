@@ -10,7 +10,7 @@ class ProductGrid  extends StatelessWidget {
     Product('Product 6', 'assets/images/coming soon.jpeg', 0, 0),
     Product('Product 7', 'assets/images/coming soon.jpeg', 0, 0),
     Product('Product 8', 'assets/images/coming soon.jpeg', 0, 0),
-    // Add more products here
+    // Add more products here 
   ];
 
   @override
