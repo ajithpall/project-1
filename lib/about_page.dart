@@ -45,7 +45,7 @@ class Aboutpage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
+                    color: Colors.black.withOpacity(0.4),
                     offset: const Offset(0, 4),
                     blurRadius: 6,
                     spreadRadius: 2,
@@ -73,7 +73,7 @@ class Aboutpage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
+                    color: Colors.black.withOpacity(0.4),
                     offset: const Offset(0, 4),
                     blurRadius: 6,
                     spreadRadius: 2,
@@ -84,7 +84,7 @@ class Aboutpage extends StatelessWidget {
           ),
           Positioned(
             left: 950,
-            bottom: 60,
+            bottom: 50,
             child: Row(
               children: [
                 Column(
@@ -137,6 +137,7 @@ class Aboutpage extends StatelessWidget {
                 ),
                 const SizedBox(width: 10),
                 const Column(
+                  crossAxisAlignment : CrossAxisAlignment.start,
                   children: [
                      Text(
                       "8610803536",

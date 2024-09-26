@@ -83,13 +83,13 @@ class _AppOneState extends State<AppOne> {
             ),
             boxShadow: [
               BoxShadow(
-                color : Colors.blue.withOpacity(0.6),
+                color : Colors.lightBlue.withOpacity(0.9),
                 offset: const Offset(0,5),
                 blurRadius: 9,
               ),
             ],
           ),
-          padding: const EdgeInsets.fromLTRB(0, 20, 500, 0),
+          padding: const EdgeInsets.fromLTRB(0, 25, 500, 0),
           child: const FlexibleSpaceContent(),
         ),
         actions: [
@@ -135,7 +135,7 @@ class _AppOneState extends State<AppOne> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/background.png"),
+                image: AssetImage("assets/images/backgroundtwo.jpg"),
                 fit: BoxFit.cover,
               ),
             ),
