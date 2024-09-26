@@ -126,8 +126,3 @@ class LoginPage extends StatelessWidget {
   }
 }
 
-void main() {
-  runApp(MaterialApp(
-    home: LoginPage(),
-  ));
-}
