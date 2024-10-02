@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
-
-  void _showLoginDialog(BuildContext context) {
+  void showLoginDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -20,7 +18,7 @@ class LoginPage extends StatelessWidget {
                   onTap: () {
                     // Handle email login
                     Navigator.of(context).pop();
-                    _showEmailLoginForm(context);
+                    showEmailLoginForm(context);
                   },
                 ),
                 ListTile(
@@ -57,7 +55,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  void _showEmailLoginForm(BuildContext context) {
+  void showEmailLoginForm(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -109,20 +107,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login Example'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.login),
-            onPressed: () => _showLoginDialog(context),
-          ),
-        ],
-      ),
-      body: const Center(
-        child: Text('Welcome to the Login Page!'),
-      ),
-    );
+    // TODO: implement build
+    throw UnimplementedError();
   }
 }
-

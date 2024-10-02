@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:drone_sale/drones_page.dart';
-import 'package:drone_sale/main.dart';
 
 class FlexibleSpaceContent extends StatelessWidget {
-  const FlexibleSpaceContent({Key? key}) : super(key: key);
+  final VoidCallback onContactUsPressed; // Callback for Contact Us button
+  const FlexibleSpaceContent({Key? key, required this.onContactUsPressed})
+      : super(key: key);
 
-  void CallUs() {
-    AppOne calls = AppOne();
-    calls.callUs();
-    print(' CallUs works ');
-  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,21 +13,19 @@ class FlexibleSpaceContent extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            child: InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => DroneParts()),
-                );
-              },
-              child: const Text(
-                'DRONES',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DroneParts()),
+              );
+            },
+            child: const Text(
+              'DRONES',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
               ),
             ),
           ),
@@ -39,22 +33,22 @@ class FlexibleSpaceContent extends StatelessWidget {
             // Services PopupMenuButton
             child: PopupMenuButton<String>(
               onSelected: (value) {
-                print('Selected: $value');
+                print('>: $value');
                 // Perform actions based on selection
               },
               itemBuilder: (BuildContext context) {
                 return const <PopupMenuEntry<String>>[
                   PopupMenuItem<String>(
-                    value: 'Service 1',
-                    child: Text('Maintenance'),
+                    value: '>',
+                    child: Text('> MAINTENANCE'),
                   ),
                   PopupMenuItem<String>(
-                    value: 'Cable Management',
-                    child: Text('Wiring work'),
+                    value: '>',
+                    child: Text('> WIRING WORK'),
                   ),
                   PopupMenuItem<String>(
-                    value: 'Calibration',
-                    child: Text('Calibration'),
+                    value: '>',
+                    child: Text('> CALIBRATION'),
                   ),
                 ];
               },
@@ -87,13 +81,8 @@ class FlexibleSpaceContent extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            // Contact Us Button
-            child: TextButton(
-              onPressed: () {
-                // Call the scroll function
-                CallUs(); //calling the class
-              },
+           TextButton(
+              onPressed: onContactUsPressed,
               child: const Text(
                 'CONTACT US',
                 style: TextStyle(
@@ -102,7 +91,6 @@ class FlexibleSpaceContent extends StatelessWidget {
                     fontSize: 20),
               ),
             ),
-          ),
         ],
       ),
     );

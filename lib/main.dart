@@ -5,6 +5,7 @@ import 'package:drone_sale/product_grid.dart';
 import 'package:drone_sale/bar_text.dart';
 import 'package:drone_sale/about_page.dart';
 import 'package:drone_sale/login_page.dart';
+import 'package:drone_sale/Profile page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -21,25 +22,16 @@ class MyApp extends StatelessWidget {
 
 class AppOne extends StatefulWidget {
   const AppOne({super.key});
-
   @override
   _AppOneState createState() => _AppOneState();
-
-  //return type _AppOneState   cretatestate is method to create a state return _AppOneState
-  void callUs() {
-    _AppOneState().scrollToContactUs(); // Publicly accessible
-  }
+//return type _AppOneState   cretatestate is method to create a state return _AppOneState
 }
 
 class _AppOneState extends State<AppOne> {
   final ScrollController _scrollController = ScrollController();
-
   // final class name  instance name  = class name () ;
   final GlobalKey _contactUsKey = GlobalKey();
-
   //golbalkey is class that create ah instance name of _contactkey that return value of globalkey
-  //ScrollController get contactus => _scrollController;
-  //return type get get_name ger_return _scrollcontroller
   void scrollToContactUs() {
     final context = _contactUsKey.currentContext;
     //context value is get form global key instance and set the current value of context
@@ -56,6 +48,7 @@ class _AppOneState extends State<AppOne> {
       );
     }
   }
+  LoginPage loginpage = const LoginPage();//loginpage instance loginpage
 
   @override
   Widget build(BuildContext context) {
@@ -90,13 +83,13 @@ class _AppOneState extends State<AppOne> {
             ],
           ),
           padding: const EdgeInsets.fromLTRB(0, 25, 500, 0),
-          child: const FlexibleSpaceContent(),
+          child:  FlexibleSpaceContent(onContactUsPressed: scrollToContactUs,),
         ),
         actions: [
           // ElevatedButton for Login
           ElevatedButton(
             onPressed: () {
-              LoginPage();
+              loginpage.showLoginDialog(context);
               // Navigate to login screen or perform login action
             },
             style: ElevatedButton.styleFrom(
@@ -124,7 +117,12 @@ class _AppOneState extends State<AppOne> {
           IconButton(
             icon: const Icon(Icons.manage_accounts_rounded),
             onPressed: () {
-              // Add functionality here
+             Navigator.push(
+               context,
+             MaterialPageRoute ( builder: (context) =>  ProfilePage(email:'defult',loginDate: 'defult',phoneNumber:
+               'defult',profileImageUrl: 'defult ',userName: 'defult',),
+             ),
+             );
             },
           ),
           const SizedBox(width: 25),
