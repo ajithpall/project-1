@@ -6,8 +6,13 @@ import 'package:drone_sale/bar_text.dart';
 import 'package:drone_sale/about_page.dart';
 import 'package:drone_sale/login_page.dart';
 import 'package:drone_sale/Profile page.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() => runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -119,7 +124,7 @@ class _AppOneState extends State<AppOne> {
             onPressed: () {
              Navigator.push(
                context,
-             MaterialPageRoute ( builder: (context) =>  ProfilePage(email:'defult',loginDate: 'defult',phoneNumber:
+             MaterialPageRoute ( builder: (context) =>  const ProfilePage(email:'defult',loginDate: 'defult',phoneNumber:
                'defult',profileImageUrl: 'defult ',userName: 'defult',),
              ),
              );

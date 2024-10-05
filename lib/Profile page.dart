@@ -131,7 +131,7 @@ class ProfileDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ProfilePage(
+    return const ProfilePage(
       userName: "John Doe",
       email: "john.doe@example.com",
       phoneNumber: "+1234567890",
