@@ -91,7 +91,8 @@ class ProfilePage extends StatelessWidget {
               ],
             ),
 
-            SizedBox(height: screenHeight * 0.05),
+            SizedBox(height: screenHeight * 0.0
+            ),
 
             // Edit Profile Button
             ElevatedButton(
@@ -100,7 +101,7 @@ class ProfilePage extends StatelessWidget {
               },
               child:  Text(
                 'Edit Profile',
-                style: TextStyle(fontSize: screenWidth * 0.045),
+                style: TextStyle(fontSize: screenWidth * 0.04),
               ),
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.symmetric(
