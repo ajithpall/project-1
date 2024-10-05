@@ -101,7 +101,7 @@ class ProfilePage extends StatelessWidget {
               },
               child:  Text(
                 'Edit Profile',
-                style: TextStyle(fontSize: screenWidth * 0.04),
+                style: TextStyle(fontSize: screenWidth * 0.05),
               ),
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.symmetric(
