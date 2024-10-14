@@ -10,7 +10,14 @@ import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options:  FirebaseOptions(
+        apiKey: "AIzaSyCELB71aomM9YH2UYc-fkZH2i-QGpwhYFQ",
+        projectId: "dronedoc-53389",
+        messagingSenderId: "362940288093",
+        appId: "1:362940288093:web:e78faee22f01c09e6711b4",
+    ),
+  );
   runApp(const MyApp());
 }
 
