@@ -9,12 +9,9 @@
     "test": "flutter test"
   },
   "dependencies": {
-    "firebase": "^10.14.0",
-    "flutter": "^x.x.x",
-    "flutter_web_plugins": "^x.x.x"
+    "firebase": "^10.14.0"
   },
   "devDependencies": {
-    "build_runner": "^x.x.x",
     "flutter_test": "^x.x.x"
   }
 }
