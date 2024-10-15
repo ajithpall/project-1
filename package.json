@@ -4,7 +4,7 @@
   "description": "E-commerce for drone sales - Flutter web application",
   "main": "lib/main.dart",
   "scripts": {
-    "start": "flutter run -d chrome",
+    "start": "node index.js",
     "build": "flutter build web",
     "test": "flutter test"
   },
@@ -15,3 +15,4 @@
     "flutter_test": "^x.x.x"
   }
 }
+
