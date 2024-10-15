@@ -10,9 +10,6 @@
   },
   "dependencies": {
     "firebase": "^10.14.0"
-  },
-  "devDependencies": {
-    "flutter_test": "^x.x.x"
   }
 }
 
