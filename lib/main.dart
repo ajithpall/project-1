@@ -11,7 +11,7 @@ import 'package:firebase_core/firebase_core.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options:  FirebaseOptions(
+    options:  const FirebaseOptions(
         apiKey: "AIzaSyCELB71aomM9YH2UYc-fkZH2i-QGpwhYFQ",
         projectId: "dronedoc-53389",
         messagingSenderId: "362940288093",
