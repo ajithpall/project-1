@@ -2,14 +2,8 @@
   "name": "drone_sale",
   "version": "1.0.0",
   "description": "E-commerce for drone sales - Flutter web application",
-  "main": "lib/main.dart",
   "scripts": {
-    "start": "node index.js",
     "build": "flutter build web",
     "test": "flutter test"
-  },
-  "dependencies": {
-    "firebase": "^10.14.0"
   }
 }
-

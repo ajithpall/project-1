@@ -3,29 +3,32 @@ name: Firebase Deploy
 on:
   push:
     branches:
-      - main  # or the branch you want to trigger deployment
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'  # Upgrade to the latest LTS version of Node.js
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Set up Firebase authentication
-      run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}" > ./firebase-key.json
+      - name: Set up Firebase authentication
+        run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}" > ./firebase-key.json
 
-    - name: Authenticate Firebase
-      run: firebase auth:import --project <your-project-id> --key-file ./firebase-key.json
+      - name: Authenticate Firebase
+        run: firebase use --add <your-project-id> --token "${{ secrets.FIREBASE_TOKEN }}"  # Use token-based auth for Firebase CLI
 
-    - name: Deploy to Firebase
-      run: firebase deploy --only hosting
+      - name: Deploy to Firebase
+        run: firebase deploy --only hosting
