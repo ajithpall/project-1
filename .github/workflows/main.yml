@@ -24,9 +24,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Set up Firebase authentication
-        run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}" > ./firebase-key.json
-
       - name: Authenticate Firebase
         run: firebase use --add <your-project-id> --token "${{ secrets.FIREBASE_TOKEN }}"  # Use token-based auth for Firebase CLI
 
