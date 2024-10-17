@@ -8,7 +8,7 @@ import 'package:drone_sale/login_page.dart';
 import 'package:drone_sale/Profile page.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-void main() /*async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options:  const FirebaseOptions(
@@ -17,7 +17,7 @@ void main() /*async {
         messagingSenderId: "362940288093",
         appId: "1:362940288093:web:e78faee22f01c09e6711b4",
     ),
-  );*/{
+  );
   runApp(const MyApp());
 }
 
