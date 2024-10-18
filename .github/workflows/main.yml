@@ -15,7 +15,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18'  # Upgrade to the latest LTS version of Node.js
+          node-version: '16'  # Upgrade to the latest LTS version of Node.js
 
       - name: Install Flutter SDK
         uses: subosito/flutter-action@v2
