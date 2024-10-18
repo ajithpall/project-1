@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:drone_sale/drones_page.dart';
+import 'package:DroneDoc/partpage.dart';
 
 class FlexibleSpaceContent extends StatelessWidget {
   final VoidCallback onContactUsPressed; // Callback for Contact Us button

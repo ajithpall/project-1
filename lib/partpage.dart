@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class DroneParts extends StatelessWidget {
   final List<Product> products = [
     Product('Part 1', 'assets/images/coming soon.jpeg', 0, 0), // the number is the price of the product

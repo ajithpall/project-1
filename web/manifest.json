@@ -1,6 +1,6 @@
 {
-    "name": "drone_sale",
-    "short_name": "drone_sale",
+    "name": "project-1",
+    "short_name": "project-1",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

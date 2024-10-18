@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:drone_sale/search.dart';
-import 'package:drone_sale/slider.dart';
-import 'package:drone_sale/product_grid.dart';
-import 'package:drone_sale/bar_text.dart';
-import 'package:drone_sale/about_page.dart';
-import 'package:drone_sale/login_page.dart';
-import 'package:drone_sale/Profile page.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:DroneDoc/partpage.dart';
+import 'package:DroneDoc/about_page.dart';
+import 'package:DroneDoc/bar_text.dart';
+import 'package:DroneDoc/EmailSender.dart';
+import 'package:DroneDoc/login_page.dart';
+import 'package:DroneDoc/product_grid.dart';
+import 'package:DroneDoc/Profile page.dart';
+import 'package:DroneDoc/search.dart';
+import 'package:DroneDoc/slider.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
