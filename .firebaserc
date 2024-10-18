@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "dronedoc-53389"
-  }
+    "default": "dronedoc-53389",
+    "y": "dronedoc-122002"
+  },
+  "targets": {},
+  "etags": {}
 }
