@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Flutter Web App</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script src="flutter.js" defer></script>
+    <style>
+        /* Add your custom styles here */
+    </style>
+</head>
+<body>
+<script>
+    // Flutter web entry point
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('flutter_service_worker.js');
+    }
+</script>
+<script src="main.dart.js" type="application/javascript"></script>
+</body>
+</html>
