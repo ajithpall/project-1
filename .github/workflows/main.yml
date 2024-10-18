@@ -17,11 +17,19 @@ jobs:
         with:
           node-version: '18'  # Upgrade to the latest LTS version of Node.js
 
+      - name: Install Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'stable'
+
       - name: Install dependencies
         run: npm install
 
+      - name: Build Flutter Web
+        run: flutter build web
+
       - name: Authenticate Firebase
-        run: firebase use --add <your-project-id> --token "${{ secrets.FIREBASE_TOKEN }}"  # Use token-based auth for Firebase CLI
+        run: firebase use --add 1//0gS8KQWMjBhYvCgYIARAAGBASNwF-L9IrybGyES9wgkseOmyV7tEyj95XdtMM4a6wdLb4l-5LU4OfLEwl8CJNbvS-Fy06i2IasBY --token "${{ secrets.FIREBASE_TOKEN }}"  # Use token-based auth for Firebase CLI
 
       - name: Deploy to Firebase
         run: firebase deploy --only hosting

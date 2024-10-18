@@ -15,10 +15,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options:  const FirebaseOptions(
-        apiKey: "AIzaSyCELB71aomM9YH2UYc-fkZH2i-QGpwhYFQ",
-        projectId: "dronedoc-53389",
-        messagingSenderId: "362940288093",
-        appId: "1:362940288093:web:e78faee22f01c09e6711b4",
+        apiKey: "AIzaSyD9yryK5ye3sGlpdb8K5XMIqx4mhneNoZs",
+        projectId: "dronedoc-122002",
+        messagingSenderId: "79610299425",
+        appId: "1:79610299425:web:44fd278b909d1175518f60",
     ),
   );
   runApp(const MyApp());
