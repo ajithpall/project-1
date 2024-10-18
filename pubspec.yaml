@@ -1,4 +1,4 @@
-name: drone_sale
+name: DroneDoc
 description: "E-commerce for drone sale"
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
@@ -10,12 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  provider: ^6.1.1
   url_strategy: ^0.2.0
   carousel_slider: ^4.2.1
   cupertino_icons: ^1.0.6
-  flutter_riverpod: ^2.5.1
-  riverpod_annotation: ^2.3.5
 
   # Firebase dependencies
   firebase_core: ^2.27.1
@@ -31,14 +28,10 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.1
-  riverpod_generator: ^2.4.0
   build_runner: ^2.4.8
   custom_lint: ^0.6.4
-  riverpod_lint: ^2.3.10
-
 flutter:
   assets:
-    - assets/images/background.png
     - assets/images/logo.png
     - assets/images/coming soon.jpeg
     - assets/images/gmail logo.png
