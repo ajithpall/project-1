@@ -22,7 +22,7 @@ jobs:
           node-version: '18.x'  # Use the latest LTS version of Node.js for stability
 
       - name: Install Flutter SDK
-        uses: subosito/flutter-action@v3
+        uses: subosito/flutter-action@v2
         with:
           flutter-version: 3.19.3  # The Flutter version you're using
 
