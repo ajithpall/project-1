@@ -41,10 +41,6 @@ jobs:
       - name: Build Flutter Web
         run: flutter build web
 
-      # Authenticate Firebase (this part has been updated)
-      - name: Firebase Login:CI
-        run: firebase login:ci --interactive # This command will prompt you to authenticate manually, run this once locally
-
       # Firebase Authentication using token
       - name: Authenticate Firebase
         run: firebase use --add --token "${{ secrets.FIREBASE_TOKEN }}"  # Use Firebase token stored in secrets for authentication
