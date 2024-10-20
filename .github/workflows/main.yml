@@ -13,33 +13,46 @@ jobs:
       - name: Set up job
         run: echo "Job started"
 
+      # Checkout the code from the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'  # Use the latest LTS version of Node.js for stability
+          node-version: '18.x'  # Use the latest LTS version of Node.js
 
+      # Install Flutter SDK
       - name: Install Flutter SDK
         uses: subosito/flutter-action@v2
         with:
           flutter-version: 3.19.3  # The Flutter version you're using
 
+      # Install Firebase CLI
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
 
+      # Install Flutter dependencies
       - name: Install Flutter dependencies
-        run: flutter pub get  # Ensure you install Flutter dependencies
+        run: flutter pub get
 
+      # Build Flutter Web
       - name: Build Flutter Web
         run: flutter build web
 
+      # Authenticate Firebase (this part has been updated)
+      - name: Firebase Login:CI
+        run: firebase login:ci --interactive # This command will prompt you to authenticate manually, run this once locally
+
+      # Firebase Authentication using token
       - name: Authenticate Firebase
-        run: firebase use --token "${{ secrets.FIREBASE_TOKEN }}"  # Authenticate using Firebase token
+        run: firebase use --add --token "${{ secrets.FIREBASE_TOKEN }}"  # Use Firebase token stored in secrets for authentication
 
-      - name: Deploy to Firebase
-        run: firebase deploy --only hosting --token "${{ secrets.FIREBASE_TOKEN }}"  # Deploy hosting
+      # Deploy the build to Firebase Hosting
+      - name: Deploy to Firebase Hosting
+        run: firebase deploy --only hosting --token "${{ secrets.FIREBASE_TOKEN }}"
 
+      # Completion message
       - name: Complete job
         run: echo "Deployment complete"
