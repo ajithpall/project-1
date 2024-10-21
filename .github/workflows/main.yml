@@ -34,7 +34,7 @@ jobs:
 
       # Authenticate with Firebase
       - name: Authenticate with Firebase
-        run: firebase login --token "${{ secrets.FIREBASE_TOKEN }}"
+        run: firebase login:ci --token "${{ secrets.FIREBASE_TOKEN }}"
 
       # Install Flutter dependencies
       - name: Install Flutter dependencies
