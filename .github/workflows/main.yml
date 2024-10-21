@@ -42,13 +42,12 @@ jobs:
         run: flutter build web
 
       # Firebase Authentication using token
-      - name: Authenticate Firebase
-        run: firebase use --add --token "${{ secrets.FIREBASE_TOKEN }}"  # Use Firebase token stored in secrets for authentication
-
-      # Deploy the build to Firebase Hosting
+      - name: Set Google Application Credentials
+        run: |
+          echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > C:\Users\Ajithpall\Desktop\PROJECTS\DRONEDOC\.firebase\dronedoc-122002-firebase-adminsdk-4d5qn-f5abbaa548.json
+    
       - name: Deploy to Firebase Hosting
-        run: firebase deploy --only hosting --token "${{ secrets.FIREBASE_TOKEN }}"
-
+        run: firebase deploy --only hosting
       # Completion message
       - name: Complete job
         run: echo "Deployment complete"
