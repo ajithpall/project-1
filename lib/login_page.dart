@@ -8,7 +8,8 @@ class LoginPage extends StatelessWidget {
         return AlertDialog(
           title: const Text('Login'),
           content: SizedBox(
-            height: 200,
+            height: 300,
+            width : 200,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [

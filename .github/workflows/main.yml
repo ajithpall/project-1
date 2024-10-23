@@ -35,7 +35,7 @@ jobs:
 
       # Set up Google Application Credentials from GitHub Secret
       - name: Set up Google Application Credentials
-        run: echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > $GITHUB_WORKSPACE/firebase-key.json
+        run: echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}"
 
       # Export Google Application Credentials as environment variable
       - name: Set Firebase Application Credentials
