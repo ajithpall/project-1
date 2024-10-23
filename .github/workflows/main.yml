@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Set up job
         run: echo "Job started"
@@ -26,15 +27,19 @@ jobs:
       - name: Install Flutter SDK
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: 3.19.3  # The Flutter version you're using
+          flutter-version: '3.19.3'  # Specify the Flutter version you're using
 
       # Install Firebase CLI
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
 
-      # Authenticate with Firebase
-      - name: Authenticate with Firebase
-        run: firebase login:ci --token "${{ secrets.FIREBASE_TOKEN }}"
+      # Set up Google Application Credentials from GitHub Secret
+      - name: Set up Google Application Credentials
+        run: echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > $GITHUB_WORKSPACE/firebase-key.json
+
+      # Export Google Application Credentials as environment variable
+      - name: Set Firebase Application Credentials
+        run: export GOOGLE_APPLICATION_CREDENTIALS=$GITHUB_WORKSPACE/firebase-key.json
 
       # Install Flutter dependencies
       - name: Install Flutter dependencies
@@ -44,14 +49,13 @@ jobs:
       - name: Build Flutter Web
         run: flutter build web
 
-      # Set Google Application Credentials
-      - name: Set Google Application Credentials
-        run: |
-          echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > C:\Users\Ajithpall\Desktop\PROJECTS\DRONEDOC\.firebase\dronedoc-122002-firebase-adminsdk-4d5qn-f5abbaa548.json
-
       # Deploy to Firebase Hosting
       - name: Deploy to Firebase Hosting
-        run: firebase deploy --only hosting
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
       # Completion message
       - name: Complete job
