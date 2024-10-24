@@ -44,10 +44,7 @@ jobs:
 
       # Step 8: Initialize Firebase Hosting (only if needed)
       - name: Firebase Init Hosting
-        run: |
-          if [ ! -f firebase.json ]; then
-            firebase init hosting
-          fi
+        run: firebase init hosting
 
       # Step 9: Deploy to Firebase Hosting
       - name: Deploy to Firebase Hosting
