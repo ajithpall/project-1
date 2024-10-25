@@ -1,27 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-class AdvertisementWidget extends StatelessWidget {
-  const AdvertisementWidget({super.key});
+//import 'package:DroneDoc/main.dart';
 
+class AdvertisementWidget extends StatelessWidget {
+  AdvertisementWidget({super.key});
+  final List<String> imgList = [
+    'assets/images/redback.jpeg',
+    'assets/images/redback2.jpeg',
+    'assets/images/redback3.jpeg',
+  ];
+
+  final CarouselController _carouselController =
+      CarouselController(); // CarouselController instance
   @override
   Widget build(BuildContext context) {
-    final List<String> imgList = [
-      'assets/images/redback.jpeg',
-      'assets/images/redback2.jpeg',
-      'assets/images/redback3.jpeg',
-    ];
-
     return Stack(
       children: [
         CarouselSlider.builder(
+          carouselController: _carouselController, // Attach the controller
           itemCount: imgList.length,
           itemBuilder: (context, index, realIndex) {
             return Container(
-              width: double.infinity,
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
               margin: const EdgeInsets.symmetric(horizontal: 10.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(30),
-                child: Image.network(
+                child: Image.asset(
+                  // Using local assets with Image.asset
                   imgList[index],
                   fit: BoxFit.cover,
                 ),
@@ -29,11 +35,10 @@ class AdvertisementWidget extends StatelessWidget {
             );
           },
           options: CarouselOptions(
-            height: 500.0,
             autoPlay: true,
             autoPlayInterval: const Duration(seconds: 3),
             enlargeCenterPage: true,
-            aspectRatio: 16/9,
+            aspectRatio: 16 / 9,
             viewportFraction: 0.8,
           ),
         ),
@@ -44,7 +49,10 @@ class AdvertisementWidget extends StatelessWidget {
           child: IconButton(
             icon: const Icon(Icons.arrow_left, color: Colors.white),
             onPressed: () {
-              // Add functionality to navigate to the previous image
+              _carouselController.previousPage(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+              );
             },
           ),
         ),
@@ -55,8 +63,11 @@ class AdvertisementWidget extends StatelessWidget {
           child: IconButton(
             icon: const Icon(Icons.arrow_right, color: Colors.white),
             onPressed: () {
-              // Add functionality to navigate to the next image
-            },
+              _carouselController.nextPage(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+              );
+            }, // on pressed event
           ),
         ),
       ],

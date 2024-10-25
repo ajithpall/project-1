@@ -5,9 +5,10 @@ class Aboutpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     return Container(
-      width: double.infinity,
-      height: 400,
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.width > 800 ? 400 : 800,
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [Colors.blue, Colors.white],
@@ -34,12 +35,13 @@ class Aboutpage extends StatelessWidget {
               ],
             ),
           ),
+          //big box about page
           Positioned(
-            left: 20,
-            top: 60,
+            left: screenWidth > 800 ? 20 : 20 ,
+            top: screenWidth > 800 ? 60 : 60,
             child: Container(
               height: 300,
-              width: 800,
+              width: MediaQuery.of(context).size.width / 2,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
@@ -62,12 +64,13 @@ class Aboutpage extends StatelessWidget {
               ),
             ),
           ),
+          // small box contact page
           Positioned(
-            left: 900,
-            top: 60,
+            right: screenWidth > 800 ? 40 : 40,
+            bottom: screenWidth > 800 ? 10 : 10,
             child: Container(
               height: 300,
-              width: 400,
+              width: MediaQuery.of(context).size.width /4,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
@@ -82,9 +85,10 @@ class Aboutpage extends StatelessWidget {
               ),
             ),
           ),
+          // values on small box
           Positioned(
-            left: 950,
-            bottom: 50,
+            right: screenWidth > 800 ? 20 : 20,
+            bottom: screenWidth > 800 ? 50 : 50,
             child: Row(
               children: [
                 Column(

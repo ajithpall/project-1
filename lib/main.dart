@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:DroneDoc/partpage.dart';
+
+//import 'package:DroneDoc/partpage.dart';
 import 'package:DroneDoc/about_page.dart';
 import 'package:DroneDoc/bar_text.dart';
-import 'package:DroneDoc/EmailSender.dart';
+
+//import 'package:DroneDoc/EmailSender.dart';
 import 'package:DroneDoc/login_page.dart';
 import 'package:DroneDoc/product_grid.dart';
 import 'package:DroneDoc/Profile page.dart';
 import 'package:DroneDoc/search.dart';
 import 'package:DroneDoc/slider.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options:  const FirebaseOptions(
-        apiKey: "AIzaSyD9yryK5ye3sGlpdb8K5XMIqx4mhneNoZs",
-        projectId: "dronedoc-122002",
-        messagingSenderId: "79610299425",
-        appId: "1:79610299425:web:44fd278b909d1175518f60",
+    options: const FirebaseOptions(
+      apiKey: "AIzaSyD9yryK5ye3sGlpdb8K5XMIqx4mhneNoZs",
+      projectId: "dronedoc-122002",
+      messagingSenderId: "79610299425",
+      appId: "1:79610299425:web:44fd278b909d1175518f60",
     ),
   );
   runApp(const MyApp());
@@ -37,15 +38,18 @@ class MyApp extends StatelessWidget {
 
 class AppOne extends StatefulWidget {
   const AppOne({super.key});
+
   @override
-  _AppOneState createState() => _AppOneState();
+  State<AppOne> createState() => _AppOneState();
 //return type _AppOneState   cretatestate is method to create a state return _AppOneState
 }
 
 class _AppOneState extends State<AppOne> {
   final ScrollController _scrollController = ScrollController();
+
   // final class name  instance name  = class name () ;
   final GlobalKey _contactUsKey = GlobalKey();
+
   //golbalkey is class that create ah instance name of _contactkey that return value of globalkey
   void scrollToContactUs() {
     final context = _contactUsKey.currentContext;
@@ -63,25 +67,17 @@ class _AppOneState extends State<AppOne> {
       );
     }
   }
-  LoginPage loginpage = const LoginPage();//loginpage instance loginpage
+
+  LoginPage loginpage = const LoginPage(); //loginpage instance loginpage
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Image.asset(
-              'assets/images/logo.png',
-              height: 50,
-              width: 50,
-            ),
-            const SizedBox(width: 0),
-          ],
-        ),
         flexibleSpace: Container(
-          decoration:  BoxDecoration(
+          decoration: BoxDecoration(
             gradient: const LinearGradient(
               colors: [Colors.blueAccent, Colors.lightBlueAccent],
               // Gradient colors
@@ -91,14 +87,16 @@ class _AppOneState extends State<AppOne> {
             ),
             boxShadow: [
               BoxShadow(
-                color : Colors.lightBlue.withOpacity(0.9),
-                offset: const Offset(0,5),
+                color: Colors.lightBlue.withOpacity(0.9),
+                offset: const Offset(0, 5),
                 blurRadius: 9,
               ),
             ],
           ),
           padding: const EdgeInsets.fromLTRB(0, 25, 500, 0),
-          child:  FlexibleSpaceContent(onContactUsPressed: scrollToContactUs,),
+          child: FlexibleSpaceContent(
+            onContactUsPressed: scrollToContactUs,
+          ),
         ),
         actions: [
           // ElevatedButton for Login
@@ -132,12 +130,18 @@ class _AppOneState extends State<AppOne> {
           IconButton(
             icon: const Icon(Icons.manage_accounts_rounded),
             onPressed: () {
-             Navigator.push(
-               context,
-             MaterialPageRoute ( builder: (context) =>  const ProfilePage(email:'defult',loginDate: 'defult',phoneNumber:
-               'defult',profileImageUrl: 'defult ',userName: 'defult',),
-             ),
-             );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ProfilePage(
+                    email: 'defult',
+                    loginDate: 'defult',
+                    phoneNumber: 'defult',
+                    profileImageUrl: 'defult ',
+                    userName: 'defult',
+                  ),
+                ),
+              );
             },
           ),
           const SizedBox(width: 25),
@@ -158,7 +162,7 @@ class _AppOneState extends State<AppOne> {
             child: Column(
               children: [
                 const SizedBox(height: 20),
-                const AdvertisementWidget(), // Your advertisement banner
+                AdvertisementWidget(), // Your advertisement banner
                 const SizedBox(height: 80), //starting of after the banner
                 SizedBox(
                   height: MediaQuery.of(context).size.height *
